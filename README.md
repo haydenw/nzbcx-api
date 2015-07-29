@@ -2,8 +2,6 @@
 
 This is a PHP wrapper library for the [NZBCX API][1]
 
-_Important:_ You are responsible for this code. Use at your own risk. Create an account at https://testnet.nzbcx.com and put the code in test mode (see `example.php`)
-
 ## Installation
 Install using [Composer][2].
 

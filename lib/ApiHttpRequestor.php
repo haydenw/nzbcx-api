@@ -67,6 +67,7 @@ class ApiHttpRequestor {
 					if (property_exists($result->error, 'nonce')) {
 						throw new ExceptionAuthenticationFailure("API authentication error: Nonce ".$result->error->nonce);
 					} else if (property_exists($result->error, 'key')) {
+						if (is_array($result->error->key)) $result->error->key = implode(", ", $result->error->key);
 						throw new ExceptionAuthenticationFailure("API authentication error: Key ".$result->error->key);
 					} else if (property_exists($result->error, 'signature')) {
 						throw new ExceptionAuthenticationFailure("API authentication error: Signature ".$result->error->signature);

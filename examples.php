@@ -7,20 +7,15 @@
 // Composer autoloader
 require __DIR__ . '/vendor/autoload.php';
 
-// Use dotenv to store and retrieve sensitive API information using environment variables
-// See https://github.com/vlucas/phpdotenv
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
 // Import required namespaces
 use NZBCX_API\NZBCX;
 use NZBCX_API\Exceptions\ExceptionAPICallFailure;
 use NZBCX_API\Exceptions\ExceptionAuthenticationFailure;
 
 // Prepare API details
-$apiKey = getenv('NZBCX_API_KEY');
-$apiSecret = getenv('NZBCX_API_SECRET');
-$userId = getenv('NZBCX_API_USER_ID');
+$apiKey = "1234567";
+$apiSecret = "W8X7nzwDxifU8HYo56TzSXqVRhAFhsUc8RWo";
+$userId = "PDmYdflwnE4jQhdvnlDkK3gBQ0E1qmSdX0sL";
 
 //$nzbcx = new NZBCX($apiKey, $apiSecret, $userId); // Live mode
 $nzbcx = new NZBCX($apiKey, $apiSecret, $userId, true); // Test mode

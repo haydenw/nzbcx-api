@@ -1,0 +1,15 @@
+{
+	"name": "haydenw/nzbcx-api",
+	"description": "NZBCX API library",
+	"keywords": ["NZBCX", "bitcoin", "api", "library", "wrapper"],
+	"homepage": "https://github.com/haydenw/nzbcx-api",
+	"type": "library",
+	"license": "GPL",
+	"autoload": {
+		"psr-4": {"NZBCX_API\\": "lib/"}
+	},
+	"require": {
+		"php": "5.4.*",
+		"vlucas/phpdotenv": "v2.0.1"
+	}
+}

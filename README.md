@@ -5,7 +5,7 @@ This is a PHP wrapper library for the [NZBCX API][1]
 ## Installation
 Install using [Composer][2].
 
-    composer require haydenw/nzbcx-api
+    composer require haydenw/nzbcx-api:dev-master
 
 ## Authentication
 

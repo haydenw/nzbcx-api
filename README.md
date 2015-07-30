@@ -12,9 +12,9 @@ Install using [Composer][2].
 Modify `$apiKey`, `$apiSecret` and `$userId` to your API details. Ensure these are kept securely.
 
 ```
-$apiKey = "1234567";
-$apiSecret = "W8X7nzwDxifU8HYo56TzSXqVRhAFhsUc8RWo";
-$userId = "PDmYdflwnE4jQhdvnlDkK3gBQ0E1qmSdX0sL";
+$apiKey = "W8X7nzwDxifU8HYo56TzSXqVRhAFhsUc8RWo";
+$apiSecret = "PDmYdflwnE4jQhdvnlDkK3gBQ0E1qmSdX0sL";
+$userId = "1234567";
 ```
 
 ## Basic usage

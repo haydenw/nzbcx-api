@@ -56,30 +56,36 @@ try {
 	echo "\n";
 
 	// Check new order status
+	$filled = false;
 	if ($newOrder) {
 		echo "Requesting new order status\n";
 		$newOrderStatus = $nzbcx->accountOrders('A', $newOrder->order_id);
 		if ($newOrderStatus && count($newOrderStatus)) {
 			echo "New order status: ".$newOrderStatus[0]->status."\n";
+			$filled = ($newOrderStatus[0]->quantity == $newOrderStatus[0]->filled);
 		}
 		echo "\n";
 	}
 
-	// Cancel the order
-	if ($newOrder) {
-		echo "Cancelling new order\n";
-		$nzbcx->accountOrderCancel($newOrder->order_id);
-		echo "\n";
-	}
-
-	// Verifiying cancelled order status
-	if ($newOrder) {
-		echo "Verifiying cancelled order status\n";
-		$newOrderStatus = $nzbcx->accountOrders(null, $newOrder->order_id);
-		if ($newOrderStatus && count($newOrderStatus)) {
-			echo "Cancelled order status: ".$newOrderStatus[0]->status."\n";
+	if (!$filled) {
+		// Cancel the order
+		if ($newOrder) {
+			echo "Cancelling new order\n";
+			$nzbcx->accountOrderCancel($newOrder->order_id);
+			echo "\n";
 		}
-		echo "\n";
+
+		// Verifying cancelled order status
+		if ($newOrder) {
+			echo "Verifiying cancelled order status\n";
+			$newOrderStatus = $nzbcx->accountOrders(null, $newOrder->order_id);
+			if ($newOrderStatus && count($newOrderStatus)) {
+				echo "Cancelled order status: ".$newOrderStatus[0]->status."\n";
+			}
+			echo "\n";
+		}
+	} else {
+		echo "Order already filled\n\n";
 	}
 
 	echo "Done";

@@ -70,7 +70,7 @@ class NZBCX {
 	/**
 	 * Get account orders
 	 *
-	 * @param string $status optional U, A (active), C (cancelled), P (pending), R (rejected)
+	 * @param string $status optional U (unsent), A (active), C (cancelled), P (pending), PC (pending cancel), R (rejected), X (terminated), E (error)
 	 * @param int $orderId optional filter by client order id
 	 * @return array
 	 */
@@ -92,6 +92,18 @@ class NZBCX {
 	public function accountOrderCancel($orderId) {
 		$urlQuery = http_build_query(['order_id' => $orderId]);
 		$url = $this->apiBaseUri . 'account/order/cancel' . ($urlQuery ? '?'.$urlQuery : '');
+		return $this->http->request($url, false, true);
+	}
+
+    /**
+	 * Archive order
+	 *
+	 * @param int $orderId id of order to cancel
+	 * @return array
+	 */
+	public function accountOrderArchive($orderId) {
+		$urlQuery = http_build_query(['order_id' => $orderId]);
+		$url = $this->apiBaseUri . 'account/order/archive' . ($urlQuery ? '?'.$urlQuery : '');
 		return $this->http->request($url, false, true);
 	}
 
@@ -193,5 +205,15 @@ class NZBCX {
 	public function lastUpdate($tickerCode) {
 		$url = $this->apiBaseUri . 'lastupdate/' . $tickerCode;
 		return $this->http->request($url);
+	}
+
+	/**
+	 * End of Day 
+	 *
+	 * @return array
+	 */
+	public function endOfDay() {
+		$url = $this->apiBaseUri . 'account/orders/endofday';
+		return $this->http->request($url, false, true);
 	}
 }

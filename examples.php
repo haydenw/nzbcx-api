@@ -13,9 +13,9 @@ use NZBCX_API\Exceptions\ExceptionAPICallFailure;
 use NZBCX_API\Exceptions\ExceptionAuthenticationFailure;
 
 // Prepare API details
-$apiKey = "1234567";
-$apiSecret = "W8X7nzwDxifU8HYo56TzSXqVRhAFhsUc8RWo";
-$userId = "PDmYdflwnE4jQhdvnlDkK3gBQ0E1qmSdX0sL";
+$apiKey = "W8X7nzwDxifU8HYo56TzSXqVRhAFhsUc8RWo";
+$apiSecret = "PDmYdflwnE4jQhdvnlDkK3gBQ0E1qmSdX0sL";
+$userId = "1234567";
 
 //$nzbcx = new NZBCX($apiKey, $apiSecret, $userId); // Live mode
 $nzbcx = new NZBCX($apiKey, $apiSecret, $userId, true); // Test mode

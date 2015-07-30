@@ -32,7 +32,7 @@ class ApiHttpRequestor {
 	 *
 	 * @param string $url
 	 * @param array $postData
-	 * @return string
+	 * @return mixed
 	 */
 	public function request($url, $postData = false, $authRequired = false) {
 		$ch = curl_init();
@@ -89,7 +89,7 @@ class ApiHttpRequestor {
 
 	protected function getAuthPostData() {
 		if (!empty($this->apiKey) && !empty($this->apiSecret) && !empty($this->userId)) {
-			$nonce = strval(time()).strval($this->getMicroTime());
+			$nonce = strval(time());
 			$signature = hash_hmac('sha256', $nonce.$this->userId.$this->apiKey, $this->apiSecret);
 			$postData = [
 				'nonce' => $nonce,
